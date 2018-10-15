@@ -1,0 +1,7 @@
+ npm install eslint eslint-config-standard  eslint-friendly-formatter eslint-loader eslint-plu
+gin-html eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard babel-
+cli   babel-eslint babel-polyfill babel-preset-env babel-preset-react babel-preset-stage-0 browser-sync browser-sync-web
+pack-plugin eslint-plugin-html eslint eslint-plugin-vue@next eslint-plugin-prettier eslint-config-prettier eslint-plugin-transform-class-properties
+
+npm install axios react react-dom react-redux recompose redux redux-saga redux-thunk reselect
+ ramda prop-types react-side-effect
