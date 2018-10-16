@@ -6,6 +6,8 @@ const sidebarSelectors = require("../stores/selectors/sideBar");
 const { withNamespaces } = require("react-i18next");
 const logger = require("../utils/LoggerUtils");
 
+const SideBarContainer = require("../containers/SideBarContainer");
+
 class SideBar extends React.Component {
   static propTypes = {
     id: PropTypes.string,
@@ -18,39 +20,13 @@ class SideBar extends React.Component {
     stateSelector: "sidebar"
   };
 
+  getTools = () => {
+    return this.props.items.sort((a, b) => a.position - b.position);
+  };
+
   render() {
-    logger.info("---------------Sidebar props", this.props);
     const { expanded, active } = this.props;
-    return (
-      <div id={this.props.id}>
-        <ul className="sidebar-nav">
-          <li className="sidebar-brand">
-            <a href="#">Start Bootstrap</a>
-          </li>
-          <li>
-            <a href="#">Dashboard</a>
-          </li>
-          <li>
-            <a href="#">Shortcuts</a>
-          </li>
-          <li>
-            <a href="#">Overview</a>
-          </li>
-          <li>
-            <a href="#">Events</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Services</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    );
+    return <SideBarContainer id={this.props.id} tools={this.getTools()} />;
   }
 }
 

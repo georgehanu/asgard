@@ -22,7 +22,10 @@ i18n
     },
 
     react: {
-      wait: true
+      wait: true,
+      nsMode: "translate",
+      bindStore: false,
+      bindI18n: "languageChanged"
     },
     backend: {
       loadPath: "../editor/" + EDITOR_WORKSPACE + "/locales/{{lng}}/{{ns}}.json"

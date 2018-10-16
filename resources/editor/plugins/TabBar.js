@@ -1,6 +1,7 @@
 const React = require("react");
 const { connect } = require("react-redux");
 const tabBarActions = require("../stores/actions/tabBar");
+const assign = require("object-assign");
 
 class TabBar extends React.Component {
   render() {
@@ -46,7 +47,12 @@ const TabBarPlugin = connect(
 
 // let's export the plugin and a set of required reducers
 module.exports = {
-  TabBar: TabBarPlugin,
+  TabBar: assign(TabBarPlugin, {
+    SideBar: {
+      position: 1,
+      priority: 1
+    }
+  }),
   reducers: {
     tabBar: require("../stores/reducers/tabBar"),
     theme: require("../stores/reducers/theme")

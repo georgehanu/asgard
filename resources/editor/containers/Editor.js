@@ -3,20 +3,20 @@ const { Provider } = require("react-redux");
 const { Consumer } = require("react-redux");
 const assign = require("object-assign");
 
-const PluginsContainer = require("../../components/plugins/PluginsContainer");
-const ProjectUtils = require("../../utils/ProjectUtils");
-const ConfigUtils = require("../../utils/ConfigUtils");
-const PluginsUtils = require("../../utils/PluginsUtils");
-const StandardStore = require("../../stores/StandardStore");
+const PluginsContainer = require("../components/plugins/PluginsContainer");
+const ProjectUtils = require("../utils/ProjectUtils");
+const ConfigUtils = require("../utils/ConfigUtils");
+const PluginsUtils = require("../utils/PluginsUtils");
+const StandardStore = require("../stores/StandardStore");
 
 const EDITOR_WORKSPACE = process.env.MIX_EDITOR_WORKSPACE || "admin";
-const { plugins, requires } = require("../../workspaces/" +
+const { plugins, requires } = require("../workspaces/" +
   EDITOR_WORKSPACE +
   "/plugins");
-const pluginsCfg = require("../../workspaces/" +
+const pluginsCfg = require("../workspaces/" +
   EDITOR_WORKSPACE +
   "/pluginsConfig");
-require("../../workspaces/" + EDITOR_WORKSPACE + "/theme.js");
+require("../workspaces/" + EDITOR_WORKSPACE + "/theme.js");
 
 ConfigUtils.loadConfiguration({ workspace: EDITOR_WORKSPACE });
 
@@ -51,4 +51,4 @@ class Editor extends React.Component {
   }
 }
 
-module.exports = withNamespaces("translation")(Editor);
+module.exports = withNamespaces("translate")(Editor);

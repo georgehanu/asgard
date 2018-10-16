@@ -54,7 +54,7 @@ module.exports = {
     disablePluginIf:
       "{store().getState().project.title==='Empty Project!!@!!@!@'}",
     SideBar: {
-      position: 1,
+      position: 2,
       priority: 1
     }
   }),
