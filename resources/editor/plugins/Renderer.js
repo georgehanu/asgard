@@ -9,27 +9,11 @@ const { rendererTypeSelector } = require("../stores/selectors/renderer");
 let plugins;
 
 class Renderer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: this.props.type
-    };
-    this.updatePlugins(props);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.type !== this.props.type) {
-      this.setState({
-        type: this.props.type
-      });
-      this.updatePlugins(this.props);
-    }
-  }
-
   render() {
+    this.updatePlugins(this.props);
     return (
       <React.Fragment>
-        <plugins.Renderer>{this.props.type}</plugins.Renderer>
+        {<plugins.Renderer>{this.props.type}</plugins.Renderer>}
         <button onClick={() => this.props.changeTypeHandler("html5")}>
           ChangeType html5
         </button>
@@ -41,7 +25,7 @@ class Renderer extends React.Component {
   }
 
   updatePlugins = props => {
-    plugins = require("./Renderer/index")(props.type);
+    return (plugins = require("./Renderer/index")(props.type));
   };
 }
 

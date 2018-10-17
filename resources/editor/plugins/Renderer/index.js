@@ -1,16 +1,32 @@
 const { connect } = require("react-redux");
-const { createSelector } = require("reselect");
+const {
+  createSelectorWithDependencies: createSelector,
+  registerSelectors
+} = require("reselect-tools");
+
 const { rendererTypeSelector } = require("../../stores/selectors/renderer");
+const { activePageSelector } = require("../../stores/selectors/project");
 
 module.exports = renderType => {
   const components = require("./" + renderType + "/index");
 
-  const selector = createSelector([rendererTypeSelector], rendererType => {
+  const renderTypeSelector1 = createSelector(
+    [rendererTypeSelector],
+    rendererType => {
+      rendererType;
+    }
+  );
+
+  const mapStateToProps = state => {
     return {
-      type: rendererType
+      type: renderTypeSelector1(state),
+      activePage: activePageSelector(state)
     };
-  });
-  const Renderer = connect(selector)(components.Renderer);
+  };
+
+  registerSelectors({ renderTypeSelector1, activePageSelector });
+
+  const Renderer = connect(mapStateToProps)(components.Renderer);
 
   return {
     Renderer: Renderer

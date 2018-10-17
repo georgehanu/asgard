@@ -13,9 +13,6 @@ const EDITOR_WORKSPACE = process.env.MIX_EDITOR_WORKSPACE || "admin";
 const { plugins, requires } = require("../workspaces/" +
   EDITOR_WORKSPACE +
   "/plugins");
-const pluginsCfg = require("../workspaces/" +
-  EDITOR_WORKSPACE +
-  "/pluginsConfig");
 require("../workspaces/" + EDITOR_WORKSPACE + "/theme.js");
 
 ConfigUtils.loadConfiguration({ workspace: EDITOR_WORKSPACE });
@@ -23,17 +20,6 @@ ConfigUtils.loadConfiguration({ workspace: EDITOR_WORKSPACE });
 const store = StandardStore(ProjectUtils.getEmptyProject(), {}, plugins);
 
 const { withNamespaces } = require("react-i18next");
-
-const getPluginsConfiguration = () => {
-  return {
-    standard: pluginsCfg.standard
-      .map(plugin => ({
-        name: plugin,
-        cfg: {}
-      }))
-      .concat([])
-  };
-};
 
 class Editor extends React.Component {
   render() {

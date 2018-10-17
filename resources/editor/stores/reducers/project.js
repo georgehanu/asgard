@@ -19,7 +19,7 @@ const addObject = (state, action) => {
   };
 };
 
-const emptyProject = ProjectUtils.getEmptyProject();
+const emptyProject = ProjectUtils.getRandomProject();
 
 const initialState = {
   ...emptyProject

@@ -16,62 +16,25 @@ const defaultImages = [
 ];
 
 class FabricjsRenderer extends React.Component {
-  state = {
-    images: [
-      {
-        id: "image-1",
-        type: "image",
-        width: Math.random() * 500,
-        height: Math.random() * 500,
-        left: Math.random() * 500,
-        top: Math.random() * 500,
-        src: defaultImages[parseInt(Math.random() * defaultImages.length)]
-      },
-      {
-        id: "image-2",
-        type: "image",
-        width: Math.random() * 500,
-        height: Math.random() * 500,
-        left: Math.random() * 500,
-        top: Math.random() * 500,
-        src: defaultImages[parseInt(Math.random() * defaultImages.length)]
-      },
-      {
-        id: "text-1",
-        type: "text",
-        text: "Click me",
-        width: Math.random() * 500,
-        height: Math.random() * 500,
-        left: Math.random() * 500,
-        top: Math.random() * 500,
-        shadow: "rgba(0,0,0,0.3) 5px 5px 5px",
-        stroke: "#ff1318",
-        strokeWidth: 1,
-        fontStyle: "italic"
-      }
-    ],
-    canvasSize: {
-      width: 1800,
-      height: 800
-    }
-  };
-
   render() {
-    let elements = this.state.images.map(element => {
-      switch (element.type) {
+    const { activePage: page } = this.props;
+    const { objects } = page;
+    let elements = Object.keys(objects).map(obKey => {
+      const object = objects[obKey];
+      switch (object.type) {
         case "image":
           return (
             <Image
-              key={element.id}
-              {...element}
+              key={object.id}
+              {...object}
               onMoving={this.onMovingHandler}
             />
           );
         case "text":
           return (
             <IText
-              key={element.id}
-              {...element}
+              key={object.id}
+              {...object}
               onMoving={this.onMovingHandler}
             />
           );
@@ -83,20 +46,11 @@ class FabricjsRenderer extends React.Component {
 
     return (
       <div>
-        FabricjsRenderer -> {this.props.children}
-        <div
-          style={{
-            background: "red"
-          }}
-        >
-          <Fabric
-            width={this.state.canvasSize.width}
-            height={this.state.canvasSize.height}
-          >
+        <div>
+          <Fabric width={page.width} height={page.height}>
             {elements}
           </Fabric>
         </div>
-        <button onClick={this.addImageHandler}>Add New Image</button>
       </div>
     );
   }
