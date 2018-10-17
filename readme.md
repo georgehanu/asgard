@@ -19,12 +19,19 @@ The AsgardCMS is open-sourced software licensed under the [MIT license](http://o
 To run the React-Editor:
 
 run$ composer install
+
 run$ setup a database
+
 run$ php artisan asgard:install
+
 run$ composer install
+
 apply the fix described here: https://github.com/JeffreyWay/laravel-mix/issues/1437
+
 commit asgard\Themes\Flatly\views\layouts\master.blade.php from the git, because composer changed this file
+
 run$ php artisan serve -> to open php server
+
 run$ npm run react-hot:admin -> to open the react server
 
 navigate to http://localhost:8000/en and the editor should be there
