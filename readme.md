@@ -16,7 +16,7 @@ Join the conversation on Slack [![Slack](http://slack.asgardcms.com/badge.svg)](
 
 The AsgardCMS is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
-To run the React-Editor:
+## To run the React-Editor:
 
 run$ composer install
 
